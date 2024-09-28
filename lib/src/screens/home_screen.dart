@@ -1,3 +1,4 @@
+import 'package:components/src/router/app_routes.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(const HomeScreen());
@@ -7,6 +8,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final menuOptions = AppRoutes.menuOptions;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Home Screen'),
@@ -15,14 +17,15 @@ class HomeScreen extends StatelessWidget {
       ),
       body: ListView.separated(
         itemBuilder: (context, index) => ListTile(
-          leading: const Icon(Icons.access_time_filled),
-          title: Text('Item $index'),
+          leading: Icon(menuOptions[index].icon,
+              color: const Color.fromARGB(255, 168, 28, 28)),
+          title: Text(menuOptions[index].title),
           onTap: () {
-            print('Item $index');
+            Navigator.pushNamed(context, menuOptions[index].route);
           },
         ),
         separatorBuilder: (_, __) => const Divider(),
-        itemCount: 5,
+        itemCount: menuOptions.length,
       ),
     );
   }

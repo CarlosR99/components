@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class Liveview2Screen extends StatelessWidget {
@@ -19,7 +20,9 @@ class Liveview2Screen extends StatelessWidget {
           onTap: () {
             //final osp = options[index];
             //print(osp);
-            print(options[index]);
+            if (kDebugMode) {
+              print(options[index]);
+            }
           },
         ),
         separatorBuilder: (_, __) => const Divider(),
